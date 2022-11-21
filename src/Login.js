@@ -8,12 +8,10 @@ export default function Login() {
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUserPassword] = useState("")
     const navigate = useNavigate()
-    const {setToken, setNameUser} = useContext(UserContext)
+    const {setToken} = useContext(UserContext)
 
     function login(event) {
         event.preventDefault()
-
-        /* setLoading(true) */
 
         const request = {
             email: userEmail,
@@ -23,15 +21,12 @@ export default function Login() {
         const promise = axios.post("http://localhost:5000/login", request)
 
         promise.then((res) => {
-            console.log(res)
             setToken(res.data)
-            /* setNameUser() */
             navigate('/extrato')
         })
 
         promise.catch((err) => {
             alert(err.response.data.message)
-            /* setLoading(false) */
         })
     }
     

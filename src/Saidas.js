@@ -13,7 +13,7 @@ export default function Saidas() {
     const {token} = useContext(UserContext);
 
     console.log(token)
-    const config = {headers: {authorization: `Bearer ${token}`}}
+    const config = {headers: {authorization: `Bearer ${token[0]}`}}
 
     function withdrawValue(event) {
         event.preventDefault(); 

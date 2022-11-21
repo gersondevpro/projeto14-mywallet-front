@@ -11,7 +11,7 @@ export default function Extrato() {
     const [values, setValues] = useState();
 
     console.log(token)
-    const config = {headers: {authorization: `Bearer ${token}`}}
+    const config = {headers: {authorization: `Bearer ${token[0]}`}}
     useEffect(() => {
 
         const promise = axios.get("http://localhost:5000/extrato", config)
@@ -29,7 +29,7 @@ export default function Extrato() {
 return (
     <ExtractStyled>
         <HeaderStyle>
-            <h1>Olá, Usuário</h1>
+            <h1>Olá, {token[1]}</h1>
             <Link to={`/`}><img src={logout} /></Link>
         </HeaderStyle>
         <RegistersStyled>
@@ -89,6 +89,7 @@ const RegistersStyled = styled.div`
     height: 446px;
     background-color: #FFFFFF;
     border-radius: 5px;
+    font-size: 14px;
     h3 {
         text-align: center;
         font-size: 20px;
